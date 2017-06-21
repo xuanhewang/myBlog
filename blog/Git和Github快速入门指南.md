@@ -51,25 +51,25 @@ $ git config --list
 
 ### git init
 新建一个仓库
-```
+```shell
 $ mkdir demo && cd demo
 $ git init
 ```
 ### git clone
 如果已经有了仓库，就可以直接clone到本地
 
-```
+```shell
 $ git clone git@github.com:GuoYongfeng/webpack-dev-boilerplate.git
 ```
 
 ### git add
 git add 命令可将该文件添加到缓存，如我们添加以下两个文件：
-```
+```shell
 $ touch README.md
 $ git add README.md
 ```
 还可以
-```
+```shell
 $ git add -A
 $ git add *
 ```
@@ -77,30 +77,30 @@ $ git add *
 ### git status
 
 git status 可以查看当前版本库各个文件的状态
-```
+```shell
 $ git status
 ```
 
 ### git commit
 使用 git add 命令将想要快照的内容写入缓存区， 而执行 git commit 将缓存区内容添加到仓库中。
 
-```
+```shell
 $ git commit -m '第一次版本提交'
 ```
 
 ### git reset
 git reset HEAD 命令用于取消已缓存的内容。
-```
+```shell
 $ git reset HEAD -- hello.php
 ```
 
 如果粗暴一点
-```
+```shell
 $ git reset --hard 版本号
 ```
 
 ### git rm
-```
+```shell
 $ git rm README.md
 ```
 
@@ -108,7 +108,7 @@ $ git rm README.md
 
 配置别名的好处是方便简写命令
 
-```
+```shell
 $ git config --global alias.st status
 $ git config --global alias.ci commit
 $ git config --global alias.co checkout
@@ -133,13 +133,13 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 
 首先需要在本地生成key，并且把key配置在github上
 
-```
-$ ssh-keygen -t rsa -C "guoyff@yonyou.com"
+```shell
+$ ssh-keygen -t rsa -C "811300735@qq.com"
 ```
 
 
 复制ublic key
-```
+```shell
 $ cat ~/ssh/id_rsa.pub
 ```
 
@@ -158,14 +158,14 @@ $ cat ~/ssh/id_rsa.pub
 
 如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：
 
-```
+```shell
 # 为这个仓库添加一个远程地址
 $ git remote add origin 你的github上的仓库地址（比如： git@github.com:GuoYongfeng/webpack-dev-boilerplate.git）
 ```
 如此你就能够将你的改动推送到所添加的服务器上去了。
 <br>
 执行如下命令以将这些改动提交到远端仓库：
-```
+```shell
 # 将本地版本库的资源推送到远程服务器
 $ git push origin -u master
 ```
@@ -179,71 +179,71 @@ $ git push origin -u master
 
 我们可以首先创建一个分支
 
-```
+```shell
 $ git branch mybranch
 ```
 
 然后切换到这个分支
 
-```
+```shell
 $ git checkout mybranch
 ```
 
 
 或者可以更快一点，创建一个分支并且切换过去
 
-```
+```shell
 $ git checkout -b mybranch
 ```
 
 
 如果这个分支你不想要，也可以直接删除掉
 
-```
+```shell
 $ git branch -d mybranch
 ```
 
 
 如果你和其他小伙伴基于这个分支协作，那么你需要把这个分支push到远端仓库，不然的话，这个分支是存在于你的本地的，其他的小伙伴就看不到了。
 
-```
+```shell
 $ git push origin mybranch
 ```
 
 ## 9.分支的更新与合并
 
 要更新你的本地仓库至最新改动，执行：
-```
+```shell
 git pull origin master
 ```
 这样就将本地的master分支和远程同步了
 
 也可以使用fetch和rebase来进行分支的更新
 
-```
+```shell
 $ git fetch origin
 $ git rebase origin/master
 ```
 
 以在你的工作目录中 获取（fetch） 并 合并（merge） 远端的改动。
 要合并其他分支到你的当前分支（例如 master），执行：
-```
+```shell
 $ git merge <branch>
 ```
 
 无论是分支的更新还是合并，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 冲突（conflicts）。 这时候就需要你修改这些文件来人肉合并这些 冲突（conflicts） 了。改完之后，你需要执行如下命令以将它们标记为合并成功：
-```
+```shell
 $ git add <filename>
 ```
 
 在合并改动之前，也可以使用如下命令查看：
 
-```
+```shell
 $ git diff <source_branch> <target_branch>
 ```
 
 处理冲突之后就可以commit了
-```
+```shell
 $ git commit -m "fix conflict"
 ```
 
@@ -252,12 +252,12 @@ $ git commit -m "fix conflict"
 在软件发布时创建标签，是被推荐的。
 
 使用如下命令获取版本号：
-```
+```shell
 $ git log
 ```
 
 可以执行如下命令以创建一个叫做 1.0.0 的标签：
-```
+```shell
 $ git tag 1.0.0 1b2e1d63ff
 ```
 
@@ -266,14 +266,14 @@ $ git tag 1.0.0 1b2e1d63ff
 ## 11.撤销修改和版本回退
 
 假如你做错事（自然，这是不可能的），你可以使用如下命令替换掉本地改动：
-```
+```shell
 $ git checkout -- <filename>
 ```
 
 此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。
 
 假如你想要丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它：
-```
+```shell
 # 获取的版本号可以使用git log拿到
 $ git reset --hard 希望回退的版本号
 ```
