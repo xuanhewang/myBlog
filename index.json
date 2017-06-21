@@ -8,9 +8,16 @@
   {
     "index": 2,
     "date": "2016-09-11",
-    "title": "Linux安装node",
-    "desc": "在linux系统下安装nodejs",
-    "url": "Linux安装node"
+    "title": "Git基础操作",
+    "desc": "学习git操作，创建仓库 做版本 提交代码",
+    "url": "Git基础操作"
+  },
+  {
+    "index": 3,
+    "date": "2016-09-11",
+    "title": "NPM的使用方法",
+    "desc": "NPM 使用介绍",
+    "url": "NPM的使用方法"
   },
   {
     "index": 3,
